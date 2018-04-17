@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Home from '@/Home'
 import Test from '@/components/Test'
+import TerminalManagement from '@/components/TerminalManagement'
 
 Vue.use(Router)
 
@@ -9,8 +10,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: Home,
+      children:[{
+          path: '/terminalManagement',
+          name: 'TerminalManagement',
+          component:TerminalManagement
+      }]
     },
     {
       path: '/test',
