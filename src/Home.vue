@@ -14,12 +14,12 @@
             </el-dropdown>
         </el-header>
         <el-container>
-            <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+            <el-aside width="150px" style="background-color: rgb(238, 241, 246)">
                 <el-menu :default-openeds="['1', '3']">
                     <el-menu-item index="1" @click="navRoter('terminalManagement')">
                         <template slot="title"><i class="el-icon-menu"></i>终端管理</template>
                     </el-menu-item>
-                    <el-menu-item index="2">
+                    <el-menu-item index="2" @click="navRoter('realtimeBynamic')">
                         <template slot="title"><i class="el-icon-menu"></i>实时动态</template>
                     </el-menu-item>
                     <el-menu-item index="3">
@@ -122,5 +122,8 @@ body > .el-container {
 .el-table th div {
     background: transparent !important;
     opacity: 0.7;
+}
+.el-table td, .el-table th.is-leaf{
+    border: none ! important;
 }
 </style>
