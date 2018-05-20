@@ -15,9 +15,9 @@
             </div>
             <el-button  @click="scanTerminal" style="float: right;margin:10px 20px 10px 0;" >扫描主机</el-button>
             <el-table :data="termialList" align="center" border>
-                <el-table-column label="终端名称" prop="terminalName"></el-table-column>
-                <el-table-column label="终端描述" width="300" prop="terminalDes"></el-table-column>
-                <el-table-column label="系统类型" width="120" prop="terminalDes">
+                <el-table-column label="终端名称" align="center" prop="terminalName"></el-table-column>
+                <el-table-column label="终端描述" align="center" width="300" prop="terminalDes"></el-table-column>
+                <el-table-column label="系统类型" align="center" width="120" prop="terminalDes">
                     <template slot-scope="scope">
                         <span v-if="scope.row.terminalDes.toLowerCase().indexOf('window') > -1">
                             Window
@@ -27,9 +27,9 @@
                         </span>
                     </template>
                 </el-table-column>
-                <el-table-column label="系统对象ID" prop="terminalObjectId"></el-table-column>
-                <el-table-column label="运行时间" width="120" prop="terminalUpTime"></el-table-column>
-                <el-table-column label="服务层" prop="terminalServices"></el-table-column>
+                <el-table-column label="系统对象ID" align="center" prop="terminalObjectId"></el-table-column>
+                <el-table-column label="运行时间" align="center" width="120" prop="terminalUpTime"></el-table-column>
+                <el-table-column label="服务层" align="center" prop="terminalServices"></el-table-column>
                 <el-table-column label="操作">
                     <template slot-scope="scope">
                         <el-button size="small" type="text" @click="terminalDetailInter(scope.row)">详情</el-button>

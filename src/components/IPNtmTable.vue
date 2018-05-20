@@ -1,6 +1,6 @@
 <template>
     <section>
-        <el-table :data="routeList" border>
+        <el-table :data="routeList" border height="600">
             <el-table-column label="接口索引值" width="100px" align="center" prop="ipNetToMediaIfIndex">
             </el-table-column>
             <el-table-column label="IP地址" align="center" prop="ipNetToMediaNetAddress">

@@ -1,6 +1,6 @@
 <template>
     <section>
-        <el-table :data="routeList" height="350" border>
+        <el-table :data="routeList" height="600" border>
             <el-table-column label="序号" type="index">
             </el-table-column>
             <el-table-column label="连接状态" :formatter="getProto" align="center" prop="tcpConnState">

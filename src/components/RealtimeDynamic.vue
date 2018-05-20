@@ -14,7 +14,6 @@
         </div>
         <section style="display:flex;width:100%;overflow:hidden;">
             <section class="terminal-management" v-show="tableInterface">
-                <el-button v-if="false" @click="scanTerminal" style="float: right;margin:10px 20px 10px 0;" >扫描主机</el-button>
                 <el-table :data="termialList" align="center" style="width:150px;">
                     <!-- <el-table-column label="终端名称" prop="terminalName"></el-table-column>
                     <el-table-column label="终端描述" width="300" prop="terminalDes"></el-table-column>
@@ -143,7 +142,7 @@ i{
     height: 0%;
 }
 .terminal-management .el-table{
-    height: 450px;
+    height: 670px;
     background: #fff;
     border: 1px solid #dcdfe6;
     -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);

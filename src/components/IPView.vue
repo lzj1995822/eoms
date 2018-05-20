@@ -10,7 +10,7 @@
                 <td>描述</td>
             </tr>
             <tr v-for="(val, key, index) in IPGroup" :key="key+index" v-if="val != null && key != 'id'&& key != 'terminalId'">
-                <td>{{key}}</td>
+                <td  style="width:120px;">{{key}}</td>
                 <td v-if="key == 'updateAt'" style="width:150px;">{{new Date(val).toLocaleDateString()}}</td>
                 <td style="width:150px;" v-else>{{val}}</td>
                 <td style="width:150px;">{{key | transfer("type")}}</td>

@@ -14,7 +14,7 @@
         <div class="toolbar top-title" style="padding-bottom: 0px;">
         </div>
         </div>
-        <el-tabs v-model="activeName" type="border-card" style="width:97%;margin: 0 0 0 25px">
+        <el-tabs v-model="activeName" type="border-card" style="width:97%;margin: 0 0 0 20px;">
             <el-tab-pane label="接口列表" name="first">
                 <section v-show="tableInterface" style="width:100%;margin-left:0px">
                     <div class="query">
@@ -29,17 +29,17 @@
                         <el-button type="danger" plain @click="clear" size="mini">清空</el-button>
                         <el-button type="success" plain @click="backList" size="mini">返回</el-button>
                     </div>
-                    <el-table :data="interfaceList" align="center" border :row-class-name="tableRowClassName">
+                    <el-table :data="interfaceList" align="center" border :row-class-name="tableRowClassName" height="600">
                         <el-table-column prop="ifIndex" label="序号" min-width="40" align="center">
                         </el-table-column>
-                        <el-table-column prop="ifDescr" label="描述" min-width="160">
+                        <el-table-column prop="ifDescr" label="描述" align="center" min-width="160">
                         </el-table-column>
-                        <el-table-column prop="ifSpeed" align="center" label="速率（Mbps）" min-width="100">
+                        <el-table-column prop="ifSpeed" align="center"  label="速率（Mbps）" min-width="100">
                             <template slot-scope="scope">
                                 {{scope.row.ifSpeed | format}}
                             </template>
                         </el-table-column>
-                        <el-table-column prop="ifPhysAddress" label="接口Mac地址" width="150">
+                        <el-table-column prop="ifPhysAddress" align="center" label="接口Mac地址" width="150">
                         </el-table-column>
                         <el-table-column prop="ifAdminStatus" label="接口状态" align="center" :formatter="transfer" min-width="60">
                         </el-table-column>
@@ -53,7 +53,7 @@
                                 {{scope.row.ifOutOctets | formatKb}}
                             </template>
                         </el-table-column>
-                        <el-table-column label="操作">
+                        <el-table-column label="操作" align="center">
                             <template slot-scope="scope">
                                 <el-button type="text" size="mini" @click="intDetBtn(scope.row)">接口详情</el-button>
                             </template>
@@ -68,19 +68,19 @@
                 </interface-detail>
             </el-tab-pane>
             <el-tab-pane label="IP组信息" name="second">
-                <ipview :terminalId='terminalId'></ipview>
+                <ipview :terminalId='terminalId' v-if="activeName == 'second'"></ipview>
             </el-tab-pane>
             <el-tab-pane label="IP路由表" name="third">
-                <route-table :terminalId='terminalId'></route-table>
+                <route-table :terminalId='terminalId' v-if="activeName == 'third'"></route-table>
             </el-tab-pane>
             <el-tab-pane label="IP/MAC转换表" name="seven">
-                <IPNtmTable :terminalId='terminalId'></IPNtmTable>
+                <IPNtmTable :terminalId='terminalId' v-if="activeName == 'seven'"></IPNtmTable>
             </el-tab-pane>
             <el-tab-pane label="TCP组信息" name="fourth">
-                <tcpGroup :terminalId='terminalId'></tcpGroup>
+                <tcpGroup :terminalId='terminalId' v-if="activeName == 'fourth'"></tcpGroup>
             </el-tab-pane>
             <el-tab-pane label="TCP进程连接状态" name="six">
-                <tcpTable :terminalId='terminalId'></tcpTable>
+                <tcpTable :terminalId='terminalId' v-if="activeName == 'six'"></tcpTable>
             </el-tab-pane>
             <el-tab-pane label="UDP组信息" name="five">
             </el-tab-pane>
@@ -89,12 +89,12 @@
 </template>
 <script>
 import axios from 'axios';
-import interfaceDetail from "./InterfaceDetail.vue"
-import ipview from "./IPView";
-import routeTable from './RouteTable';
-import IPNtmTable from './IPNtmTable';
-import tcpGroup from './TCPGroup';
-import tcpTable from './TCPConnectTable'
+const  ipview = () => import("./IPView");
+const  interfaceDetail = () => import('./InterfaceDetail.vue');
+const  routeTable = () => import('./RouteTable');
+const  IPNtmTable = () => import('./IPNtmTable');
+const  tcpGroup = () => import('./TCPGroup');
+const  tcpTable = () => import('./TCPConnectTable');
 export default {
     props: {
         terminalId:String,
@@ -211,12 +211,12 @@ export default {
         this.getInterfaceList();
     },
     components: {
-        "ipview":ipview,
+        ipview,
         interfaceDetail,
         routeTable,
         IPNtmTable,
         tcpGroup,
-        tcpTable
+        tcpTable,
     }
 }
 </script>
