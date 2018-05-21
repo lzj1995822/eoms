@@ -14,7 +14,11 @@
         <div class="toolbar top-title" style="padding-bottom: 0px;">
         </div>
         </div>
-        <el-tabs v-model="activeName" type="border-card" style="width:97%;margin: 0 0 0 20px;">
+        <el-tabs v-model="activeName" type="border-card" style="width:99%;margin: 0 0 0 10px;">
+            <el-tab-pane label="终端信息" name="terInfo">
+                <terminal-info :systemdDto="systemdDto" v-if="activeName == 'terInfo'">
+                </terminal-info>
+            </el-tab-pane>
             <el-tab-pane label="接口列表" name="first">
                 <section v-show="tableInterface" style="width:100%;margin-left:0px">
                     <div class="query">
@@ -95,12 +99,17 @@ const  routeTable = () => import('./RouteTable');
 const  IPNtmTable = () => import('./IPNtmTable');
 const  tcpGroup = () => import('./TCPGroup');
 const  tcpTable = () => import('./TCPConnectTable');
+const terminalInfo = () => import('./TerminalInfo');
 export default {
     props: {
         terminalId:String,
         headerVis:{
             type: Boolean,
             default: true
+        },
+        systemdDto: {
+            type: Object,
+            default: null
         }
     },
     data (){
@@ -217,6 +226,7 @@ export default {
         IPNtmTable,
         tcpGroup,
         tcpTable,
+        terminalInfo
     }
 }
 </script>

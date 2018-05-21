@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/Home'
-import Test from '@/components/Test'
+import login from '@/components/Login'
 import TerminalManagement from '@/components/TerminalManagement'
 import realtimeBynamic from "@/components/RealtimeDynamic"
 
@@ -25,9 +25,9 @@ export default new Router({
         }]
     },
     {
-      path: '/test',
-      name: 'test',
-      component: Test
+      path: '/login',
+      name: 'login',
+      component: login
     }
   ]
 })

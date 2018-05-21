@@ -45,6 +45,7 @@
                         v-if="terminalDetailInterface"
                         :terminalId="terminalId"
                         :headerVis = "false"
+                        :systemdDto = "system"
                         ></terminal-detail>
                 </section>
             </transition>
@@ -60,7 +61,8 @@ export default {
             termialList:[], //终端列表
             terminalId:"",
             terminalDetailInterface: false,
-            tableInterface: true
+            tableInterface: true,
+            system: {}
         }
     },
     methods: {
@@ -79,6 +81,7 @@ export default {
         terminalDetailInter(row){
             this.terminalDetailInterface = false;
             this.terminalId = row.id;
+            this.system =  row;
             setTimeout( ()=>{
                 this.terminalDetailInterface = true;
             },500)
