@@ -10,6 +10,17 @@ import Vuex from "vuex"
 Vue.use(Element, { size: 'small' })
 Vue.use(Vuex)
 Vue.config.productionTip = false
+console.log("..",router)
+
+
+router.beforeEach((to, from, next) => {
+    if (!sessionStorage.getItem("token") && to.path != "/login") {  // 通过vuex state获取当前的token是否存在
+        next( {path: '/login'});
+    }
+    else {
+        next()
+    }
+})
 
 /* eslint-disable no-new */
 new Vue({
@@ -18,3 +29,5 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+

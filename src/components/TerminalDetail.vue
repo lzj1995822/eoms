@@ -15,7 +15,7 @@
         </div>
         </div>
         <el-tabs v-model="activeName" type="border-card" style="width:99%;margin: 0 0 0 10px;">
-            <el-tab-pane label="终端信息" name="terInfo">
+            <el-tab-pane label="终端信息" name="terInfo" v-if="showInfo">
                 <terminal-info :systemdDto="systemdDto" v-if="activeName == 'terInfo'">
                 </terminal-info>
             </el-tab-pane>
@@ -110,6 +110,10 @@ export default {
         systemdDto: {
             type: Object,
             default: null
+        },
+        showInfo:{
+            type: Boolean,
+            default: false
         }
     },
     data (){

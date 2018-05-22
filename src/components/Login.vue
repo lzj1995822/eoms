@@ -8,7 +8,7 @@
                 <el-input type="text" v-model="username"></el-input>
             </el-form-item>
             <el-form-item label="密 码">
-                <el-input type="password" v-model="password"></el-input>
+                <el-input type="password" v-model="password" @keyup.enter.native='onSubmit'></el-input>
             </el-form-item>
             <el-form-item style="margin-top:35px;">
                 <el-button type="primary" @click="onSubmit">登录</el-button>
@@ -32,6 +32,7 @@ export default {
     methods:{
         onSubmit() {
             axios.get(`/api/user/login?name=${this.username}&password=${this.password}`).then(res => {
+                sessionStorage.setItem("token",JSON.stringify(res.data));
                 this.$router.push("TerminalManagement");
             })
         }

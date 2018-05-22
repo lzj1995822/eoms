@@ -8,41 +8,11 @@
                         <i class="el-icon-menu"></i>
                     </div>
                     <el-breadcrumb-item :to="{ path: '/' }">&nbsp;&nbsp;首页</el-breadcrumb-item>
-                    <el-breadcrumb-item>终端管理</el-breadcrumb-item>
+                    <el-breadcrumb-item>仪表盘</el-breadcrumb-item>
                 </el-breadcrumb>
             </el-col>
             <div class="toolbar top-title" style="padding-bottom: 0px;">
             </div>
-            <el-button  @click="scanTerminal" style="float: right;margin:10px 20px 10px 0;" >添加主机</el-button>
-            <el-input v-model="ip" clearable placeholder="请输入需要扫描的主机IP" style="width:220px;float:right;margin: 10px 20px 10px 0px;"></el-input>
-            <el-table :data="termialList" align="center" border>
-                <el-table-column label="终端名称" align="center" prop="terminalName"></el-table-column>
-                <el-table-column label="终端描述" align="center" width="300" prop="terminalDes"></el-table-column>
-                <el-table-column label="系统类型" align="center" width="120" prop="terminalDes">
-                    <template slot-scope="scope">
-                        <span v-if="scope.row.terminalDes.toLowerCase().indexOf('window') > -1">
-                            Window
-                        </span>
-                        <span v-else-if="scope.row.terminalDes.toLowerCase().indexOf('linux') > -1">
-                            Linux
-                        </span>
-                    </template>
-                </el-table-column>
-                <el-table-column label="系统对象ID" align="center" prop="terminalObjectId"></el-table-column>
-                <el-table-column label="运行时间" align="center" width="120" prop="terminalUpTime"></el-table-column>
-                <el-table-column label="服务层" align="center" prop="terminalServices"></el-table-column>
-                <el-table-column label="操作">
-                    <template slot-scope="scope">
-                        <el-button size="small" type="text" @click="terminalDetailInter(scope.row)">详情</el-button>
-                    </template>
-                </el-table-column>
-            </el-table>
-        </section>
-        <section class="terminal-detail">
-            <terminal-detail 
-                @back="back()"
-                :terminalId="terminalId"
-                v-if="terminalDetailInterface"></terminal-detail>
         </section>
     </section>
 </template>

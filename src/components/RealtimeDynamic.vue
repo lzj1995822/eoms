@@ -46,6 +46,7 @@
                         :terminalId="terminalId"
                         :headerVis = "false"
                         :systemdDto = "system"
+                        :showInfo = "true"
                         ></terminal-detail>
                 </section>
             </transition>
@@ -73,7 +74,7 @@ export default {
         scanTerminal() {
             axios({
                 method: "get",
-                url: "/api/terminals/scan"
+                url: "/api/terminals/scan/null"
                 }).then(res => {
                     this.termialList = res.data;
                 })

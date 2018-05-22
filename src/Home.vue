@@ -1,9 +1,9 @@
 <template>
     <el-container>
         <el-header style="text-align: right">
-            <span style="float: left;">IT运维管理系统的设计与实现</span>
+            <span style="float: left;">&emsp;IT运维管理系统的设计与实现</span>
             <el-dropdown trigger="hover">
-                <span style='color:#787878;'><i class="el-icon-tickets"></i>&nbsp;&nbsp;个人中心</span>
+                <span style='color:#787878;line-height:16px;'><img src="../static/img/user.png" style="vertical-align: middle;max-height:25px;">&nbsp;&nbsp;欢迎您，{{user.name}}</span>
                 <span class="el-dropdown-link hidden-sm-and-down userinfo-inner">
                 </span>
                 <el-dropdown-menu slot="dropdown">
@@ -14,8 +14,14 @@
             </el-dropdown>
         </el-header>
         <el-container>
-            <el-aside width="150px" style="background-color: rgb(238, 241, 246)">
+            <el-aside width="136px" style="background-color: rgb(238, 241, 246);overflow-y:hidden">
+                <div style="overflow:hidden;max-width:134px;background: #fff">
+                    <img src="../static/img/logo.png" style="max-width:120px;vertical-align: middle;"/>
+                </div>
                 <el-menu :default-openeds="['1', '3']">
+                    <el-menu-item index="1" @click="navRoter('dashbord')">
+                        <template slot="title"><i class="el-icon-menu"></i>仪 表 盘</template>
+                    </el-menu-item>
                     <el-menu-item index="1" @click="navRoter('terminalManagement')">
                         <template slot="title"><i class="el-icon-menu"></i>终端管理</template>
                     </el-menu-item>
@@ -44,7 +50,8 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            termialList:[]
+            termialList:[],
+            user: JSON.parse(sessionStorage.getItem("token"))
         }
     },
     methods: {
@@ -73,10 +80,12 @@ export default {
     padding: 0;
 }
 .el-header, .el-footer {
-    background-color: #B3C0D1;
-    color: #333;
+    background-color: #f5f5f5;
+    color: #6dc6f3;
     text-align: center;
     line-height: 60px;
+    font-size: 20px;
+    border-bottom: 1px solid #eaeaea;
 }
 
 .el-aside {
@@ -125,5 +134,6 @@ body > .el-container {
 }
 .el-table td, .el-table th.is-leaf{
     border: none ! important;
+    
 }
 </style>
